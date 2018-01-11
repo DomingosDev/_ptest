@@ -2,9 +2,16 @@
     var myOrders = {};
     var _writeMyOpenOrdersTable = window.writeMyOpenOrdersTable;
     var _writeTradeHistoryTable = window.writeTradeHistoryTable;
+    var _processMarketEvent = window.processMarketEvent;
 
     window.writeMyOpenOrdersTable = writeMyOpenOrdersTableModified;
     window.writeTradeHistoryTable = writeTradeHistoryTableModified;
+    window.processMarketEvent = processMarketEventModified;
+
+    function processMarketEventModified(args){
+        console.log(args);
+        _processMarketEvent(args);
+    }
 
     var polo = {
         sell_orders:{
@@ -74,6 +81,7 @@
         polo.vars.tradehistory = d;
 
         _writeTradeHistoryTable(d);
+
     }
 
     function notifyMe(msg) {
