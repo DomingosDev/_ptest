@@ -22,11 +22,21 @@
         },
         vars: {
             myOrders: myOrders
-        }
+        },
+        selfUpdate: selfUpdate;
     }
     window.polo_control = polo;
 
     $( document ).ajaxSuccess( trata_requisicoes );
+
+    function selfUpdate(){
+        window.writeMyOpenOrdersTable = _writeMyOpenOrdersTable;
+        window.writeTradeHistoryTable = _writeTradeHistoryTable;
+        window.processMarketEvent = _processMarketEvent;
+        delete polo;
+        delete window.polo_control;
+        $.get('https://raw.githubusercontent.com/DomingosDev/_ptest/master/init.js?v=' + new Date().getTime(),eval );
+    }
 
     function exibir_total_sell_orders(){
         $('.sellOrders-clone').remove();
