@@ -45,7 +45,21 @@
     }
 
     var _writeMyOpenOrdersTable = window.writeMyOpenOrdersTable;
+
+    var myOrders = {};
     window.writeMyOpenOrdersTable = function(d){
+        var pending = Object.keys( myOrders );
+        d.limit.forEach(function(e){
+            var index = pending.indexOf( e.orderID );
+            if(index != -1) pending.slice(index, 1);
+            if(! myOrders[e.orderID] ) myOrders[ e.orderID ] = e;
+        });
+        if(pending.length){
+            notifyMe('Ordem executada');
+            pending.forEach(function(e){
+                delete myOrders[e];
+            })
+        }
         console.log(d);
         _writeMyOpenOrdersTable(d);
     }
