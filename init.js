@@ -1,10 +1,16 @@
 (function(){
+    var myOrders = {};
+    var _writeMyOpenOrdersTable = window.writeMyOpenOrdersTable;
+    window.writeMyOpenOrdersTable = writeMyOpenOrdersTableModified;
     var polo = {
         sell_orders:{
             exibir_total: exibir_total_sell_orders
         },
         coin:{
             gap: coin_gap
+        },
+        vars: {
+            myOrders: myOrders
         }
     }
     window.polo_control = polo;
@@ -44,10 +50,7 @@
                 };
     }
 
-    var _writeMyOpenOrdersTable = window.writeMyOpenOrdersTable;
-
-    var myOrders = {};
-    window.writeMyOpenOrdersTable = function(d){
+    function writeMyOpenOrdersTableModified(d){
         var pending = Object.keys( myOrders );
         d.limit.forEach(function(e){
             var index = pending.indexOf( e.orderID );
