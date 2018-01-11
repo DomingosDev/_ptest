@@ -1,7 +1,11 @@
 (function(){
     var myOrders = {};
     var _writeMyOpenOrdersTable = window.writeMyOpenOrdersTable;
+    var _writeTradeHistoryTable = window.writeTradeHistoryTable;
+
     window.writeMyOpenOrdersTable = writeMyOpenOrdersTableModified;
+    window.writeTradeHistoryTable = writeTradeHistoryTableModified;
+
     var polo = {
         sell_orders:{
             exibir_total: exibir_total_sell_orders
@@ -63,8 +67,13 @@
                 delete myOrders[e];
             })
         }
-        console.log(d);
         _writeMyOpenOrdersTable(d);
+    }
+    function writeTradeHistoryTableModified(d){
+
+        polo.vars.tradehistory = d;
+
+        _writeTradeHistoryTable(d);
     }
 
     function notifyMe(msg) {
