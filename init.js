@@ -51,8 +51,8 @@
         var pending = Object.keys( myOrders );
         d.limit.forEach(function(e){
             var index = pending.indexOf( e.orderID );
-            if(index != -1) pending.slice(index, 1);
-            if(! myOrders[e.orderID] ) myOrders[ e.orderID ] = e;
+            if(index != -1) pending.splice(index, 1);
+            if( !myOrders[e.orderID] ) myOrders[ e.orderID ] = e;
         });
         if(pending.length){
             notifyMe('Ordem executada');
