@@ -23,7 +23,7 @@
         vars: {
             myOrders: myOrders
         },
-        selfUpdate: selfUpdate;
+        selfUpdate: selfUpdate
     }
     window.polo_control = polo;
 
