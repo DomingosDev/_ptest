@@ -72,6 +72,20 @@
                 };
     }
 
+    function getTime(date){
+        var d = date.getUTCDate() -1;
+        var h = date.getUTCHours();
+        var m = date.getUTCMinutes();
+        var s = date.getUTCSeconds();
+
+        var text = (d)? d+"d. " : ""; 
+        text+=  (h)? h+"h. " : "";
+        text+=  (m)? m+"m. " : "";
+        text+=  (s)? s+"s. " : "";
+
+        return text;
+
+    }
     function writeMyOpenOrdersTableModified(d){
         var pending = Object.keys( myOrders );
         d.limit.forEach(function(e){
@@ -82,7 +96,13 @@
         if(pending.length){
             
             pending.forEach(function(e){
-                notifyMe('Ordem executada');
+               
+                var order = myOrders[e];
+                var DIFF = new Date(new Date() - new Date("2018-01-12 13:32:51Z"));
+                var text = (order.type == "buy")? "??" :  "?";
+                text += " " + order.amount + " in " + ;
+                text += getTime(DIFF);
+                notifyMe(text);
                 delete myOrders[e];
             })
         }
