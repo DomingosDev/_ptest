@@ -24,7 +24,8 @@
         vars: {
             myOrders: myOrders
         },
-        selfUpdate: selfUpdate
+        selfUpdate: selfUpdate,
+        getTime: getTime
     }
     window.polo_control = polo;
 
@@ -86,6 +87,9 @@
         return text;
 
     }
+
+    
+
     function writeMyOpenOrdersTableModified(d){
         var pending = Object.keys( myOrders );
         d.limit.forEach(function(e){
