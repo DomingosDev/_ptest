@@ -104,8 +104,8 @@
             pending.forEach(function(e){
                
                 var order = myOrders[e];
-                var DIFF = new Date(new Date() - new Date(e.date));
-                var text = (order.type == "buy")? "&#10548;?" :  "&#10549;";
+                var DIFF = new Date(new Date() - new Date(e.date+'Z'));
+                var text = order.type + " ";
                 text += " " + order.amount + " in ";
                 text += getTime(DIFF);
                 notifyMe(text);
