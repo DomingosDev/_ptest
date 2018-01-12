@@ -29,6 +29,8 @@
     }
     window.polo_control = polo;
 
+    console.log( 'Polo Control instaled' );
+
     $( document ).ajaxSuccess( trata_requisicoes );
 
     function selfUpdate(){
