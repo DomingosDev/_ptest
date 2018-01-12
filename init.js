@@ -29,7 +29,7 @@
     }
     window.polo_control = polo;
 
-    console.log( 'Polo Control instaled' );
+    console.log( 'Polo Control installed' );
 
     $( document ).ajaxSuccess( trata_requisicoes );
 
@@ -104,7 +104,7 @@
             pending.forEach(function(e){
                
                 var order = myOrders[e];
-                var DIFF = new Date(new Date() - new Date(e.date+'Z'));
+                var DIFF = new Date(new Date() - new Date(order.date+'Z'));
                 var text = order.type + " ";
                 text += " " + order.amount + " in ";
                 text += getTime(DIFF);
