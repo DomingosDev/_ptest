@@ -100,7 +100,7 @@
                 var order = myOrders[e];
                 var DIFF = new Date(new Date() - new Date("2018-01-12 13:32:51Z"));
                 var text = (order.type == "buy")? "??" :  "?";
-                text += " " + order.amount + " in " + ;
+                text += " " + order.amount + " in ";
                 text += getTime(DIFF);
                 notifyMe(text);
                 delete myOrders[e];
