@@ -18,7 +18,8 @@
             exibir_total: exibir_total_sell_orders
         },
         coin:{
-            gap: coin_gap
+            gap: coin_gap,
+            notify: notifyMe
         },
         vars: {
             myOrders: myOrders
@@ -79,8 +80,9 @@
             if( !myOrders[e.orderID] ) myOrders[ e.orderID ] = e;
         });
         if(pending.length){
-            notifyMe('Ordem executada');
+            
             pending.forEach(function(e){
+                notifyMe('Ordem executada');
                 delete myOrders[e];
             })
         }
