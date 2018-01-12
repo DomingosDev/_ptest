@@ -9,7 +9,7 @@
     window.processMarketEvent = processMarketEventModified;
 
     function processMarketEventModified(args){
-        console.log(args);
+       // console.log(args);
         _processMarketEvent(args);
     }
 
