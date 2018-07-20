@@ -10,6 +10,7 @@
 
     function processMarketEventModified(args){
        // console.log(args);
+       usdtValue();
         _processMarketEvent(args);
     }
 
@@ -47,6 +48,10 @@
         var value = parseFloat( $('.lastPrice .info').html() );
         var btc = parseFloat( $('[data-url="usdt_btc"] .price').html() );
         var usdt = value * btc;
+
+        var target = $('.lastPrice .usdt_value');
+        if( !target.length ) $('.lastPrice').append('<div class="usdt_value">'+ usdt +'</div>');
+        
         return usdt;
     }
 
@@ -101,6 +106,7 @@
     
 
     function writeMyOpenOrdersTableModified(d){
+        usdtValue();
         var pending = Object.keys( myOrders );
         d.limit.forEach(function(e){
             var index = pending.indexOf( e.orderID );
