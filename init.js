@@ -50,7 +50,8 @@
         var usdt = value * btc;
 
         var target = $('.lastPrice .usdt_value');
-        if( !target.length ) $('.lastPrice').append('<div class="usdt_value">'+ usdt +'</div>');
+        if( target.length ) target.html( usdt.toFixed(4) );
+        if( !target.length ) $('.lastPrice').append('<div class="usdt_value">'+ usdt.toFixed(4) +'</div>');
         
         return usdt;
     }
