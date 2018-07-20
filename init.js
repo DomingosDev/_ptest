@@ -19,7 +19,8 @@
         },
         coin:{
             gap: coin_gap,
-            notify: notifyMe
+            notify: notifyMe,
+            usdValue: usdtValue
         },
         vars: {
             myOrders: myOrders
@@ -40,6 +41,13 @@
         delete polo;
         delete window.polo_control;
         $.get('https://raw.githubusercontent.com/DomingosDev/_ptest/master/init.js?v=' + new Date().getTime(),eval );
+    }
+
+    function usdtValue(){
+        var value = parseFloat( $('.lastPrice .info').html() );
+        var btc = parseFloat( $('[data-url="usdt_btc"] .price').html() );
+        var usdt = value * btc;
+        return usdt;
     }
 
     function exibir_total_sell_orders(){
